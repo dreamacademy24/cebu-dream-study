@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>세부드림연수 | 세부 유학 전문 에이전시</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0E1A24;
+  --deep: #0A3347;
+  --ocean: #0077A8;
+  --sky: #29A8D8;
+  --foam: #E3F5FB;
+  --sand: #F7F3EC;
+  --coral: #D95F3B;
+  --gold: #C9973B;
+  --white: #FFFFFF;
+  --muted: #6B8592;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans KR', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 64px;
+  background: rgba(14,26,36,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); }
+.nav-logo span { color: #5CC8EA; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.nav-links a:hover { color: #5CC8EA; }
+.nav-cta { background: var(--coral); color: var(--white) !important; padding: 8px 20px; border-radius: 6px; font-weight: 600 !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--ink);
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; padding: 120px 48px 80px; gap: 60px;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,119,168,0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(92,200,234,0.1); border: 1px solid rgba(92,200,234,0.3);
+  color: #5CC8EA; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 7px 16px; border-radius: 4px; margin-bottom: 28px;
+  animation: fadeUp 0.7s ease both;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 4.5vw, 4.2rem); font-weight: 700;
+  color: var(--white); line-height: 1.2; margin-bottom: 20px;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+.hero h1 em { font-style: italic; color: #5CC8EA; font-weight: 400; }
+.hero-desc {
+  font-size: 0.97rem; color: rgba(255,255,255,0.5); line-height: 1.9;
+  font-weight: 300; margin-bottom: 40px;
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.7s ease 0.3s both; }
+.btn-fill {
+  background: var(--coral); color: var(--white); padding: 14px 32px;
+  border-radius: 8px; font-size: 0.92rem; font-weight: 700; text-decoration: none;
+  transition: all 0.2s; box-shadow: 0 4px 20px rgba(217,95,59,0.4);
+}
+.btn-fill:hover { background: #C44E2E; transform: translateY(-2px); }
+.btn-ghost {
+  border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.8);
+  padding: 14px 32px; border-radius: 8px; font-size: 0.92rem;
+  font-weight: 400; text-decoration: none; transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: #5CC8EA; color: #5CC8EA; }
+.hero-right { animation: fadeUp 0.7s ease 0.25s both; display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1; }
+.hero-intro-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 24px 28px;
+}
+.hero-intro-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #5CC8EA; margin-bottom: 10px; font-weight: 500; }
+.hero-intro-card p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.8; font-weight: 300; }
+.hero-schools { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.school-pill {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 16px 18px; transition: all 0.2s; cursor: default;
+}
+.school-pill:hover { border-color: rgba(92,200,234,0.4); background: rgba(92,200,234,0.06); }
+.school-pill .s-name { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #5CC8EA; font-weight: 500; margin-bottom: 4px; }
+.school-pill .s-full { font-size: 0.72rem; color: rgba(255,255,255,0.32); font-weight: 300; }
+
+/* INTRO STRIP */
+.intro-strip {
+  background: var(--sand); padding: 64px 48px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  border-top: 3px solid var(--ocean);
+}
+.intro-text .eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--ocean); font-weight: 600; margin-bottom: 14px; display: block; }
+.intro-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 14px; }
+.intro-text p { font-size: 0.92rem; color: var(--muted); line-height: 1.9; font-weight: 300; max-width: 520px; }
+.intro-stats { display: flex; gap: 48px; flex-shrink: 0; }
+.i-stat { text-align: center; }
+.i-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: var(--ocean); display: block; line-height: 1; }
+.i-label { font-size: 0.75rem; color: var(--muted); font-weight: 400; margin-top: 6px; display: block; }
+
+/* SCHOOLS */
+.schools-section { padding: 100px 48px; background: var(--white); }
+.eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--ocean); font-weight: 600; margin-bottom: 14px; display: block; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--ink); line-height: 1.2; }
+.section-sub { font-size: 0.92rem; color: var(--muted); font-weight: 300; margin-top: 12px; line-height: 1.8; max-width: 520px; }
+.section-header { margin-bottom: 56px; }
+.schools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; }
+.school-card { border: 1.5px solid #E2ECF0; border-radius: 16px; overflow: hidden; transition: all 0.3s; background: var(--white); }
+.school-card:hover { border-color: var(--ocean); box-shadow: 0 12px 40px rgba(0,119,168,0.12); transform: translateY(-4px); }
+.school-card-top { padding: 28px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; }
+.school-badge { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; padding: 5px 12px; border-radius: 4px; letter-spacing: 1px; }
+.badge-cia    { background: #E8F4FB; color: #0077A8; }
+.badge-be     { background: #FFF0EB; color: #D95F3B; }
+.badge-smeag  { background: #F0F7EE; color: #3A7D44; }
+.badge-beci   { background: #FDF5E6; color: #C9973B; }
+.badge-joyful { background: #FFF0F6; color: #B5337A; }
+.badge-ev     { background: #F0EEFF; color: #5B47C9; }
+.badge-cpi    { background: #E8FBF4; color: #0E8A5F; }
+.badge-philinter { background: #FFF8E8; color: #B07B00; }
+.badge-cella  { background: #E8F0FB; color: #1A4FA8; }
+.badge-pines  { background: #F2FBE8; color: #4A8A1A; }
+.school-type { font-size: 0.75rem; color: var(--muted); font-weight: 300; background: var(--foam); padding: 4px 10px; border-radius: 4px; }
+.school-card-body { padding: 20px 28px 28px; }
+.school-card-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.school-en { font-size: 0.78rem; color: var(--muted); font-weight: 300; margin-bottom: 14px; }
+.school-desc { font-size: 0.87rem; color: #4A6070; line-height: 1.85; font-weight: 300; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--foam); }
+.school-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tag { background: var(--foam); color: var(--ocean); font-size: 0.75rem; font-weight: 500; padding: 5px 12px; border-radius: 4px; }
+.school-meta { display: flex; gap: 20px; flex-wrap: wrap; }
+.meta-item { display: flex; flex-direction: column; gap: 3px; }
+.meta-key { font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.meta-val { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+
+/* PROGRAMS */
+.programs-section { padding: 100px 48px; background: var(--ink); position: relative; overflow: hidden; }
+.programs-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M0 0h40v40H0zM40 40h40v40H40z'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.programs-section .eyebrow { color: #5CC8EA; }
+.programs-section .section-title { color: var(--white); }
+.programs-section .section-sub { color: rgba(255,255,255,0.42); }
+.programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1200px; margin-top: 56px; }
+.prog-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 32px 28px; transition: all 0.3s;
+}
+.prog-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(92,200,234,0.3); transform: translateY(-4px); }
+.prog-icon { font-size: 2.2rem; margin-bottom: 20px; display: block; }
+.prog-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.prog-en { font-size: 0.68rem; color: #5CC8EA; font-weight: 400; letter-spacing: 1.5px; margin-bottom: 14px; font-family: 'DM Mono', monospace; display: block; }
+.prog-card p { font-size: 0.87rem; color: rgba(255,255,255,0.45); line-height: 1.85; font-weight: 300; }
+.prog-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+.prog-item { font-size: 0.82rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 8px; font-weight: 300; }
+.prog-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: #5CC8EA; flex-shrink: 0; }
+
+/* HOW */
+.how-section { padding: 100px 48px; background: var(--sand); }
+.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; max-width: 1100px; margin-top: 56px; position: relative; }
+.how-grid::before {
+  content: ''; position: absolute; top: 32px; left: 12.5%; right: 12.5%; height: 1px;
+  background: repeating-linear-gradient(90deg, var(--ocean) 0, var(--ocean) 8px, transparent 8px, transparent 16px);
+}
+.step { text-align: center; padding: 0 24px; position: relative; z-index: 1; }
+.step-num {
+  width: 64px; height: 64px; border-radius: 50%; background: var(--ocean);
+  color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; border: 3px solid var(--sand);
+}
+.step h4 { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.step p { font-size: 0.82rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+/* CONTACT */
+.contact-section {
+  padding: 100px 48px; text-align: center;
+  background: linear-gradient(135deg, var(--deep) 0%, #001E30 100%);
+  position: relative; overflow: hidden;
+}
+.contact-section::before {
+  content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,119,168,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contact-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.contact-section .eyebrow { color: #5CC8EA; }
+.contact-section .section-title { color: var(--white); margin-bottom: 16px; }
+.contact-desc { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.9; font-weight: 300; margin-bottom: 48px; }
+.kakao-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #FEE500; color: #191600;
+  padding: 18px 44px; border-radius: 10px; font-size: 1rem; font-weight: 700;
+  text-decoration: none; transition: all 0.25s;
+  box-shadow: 0 8px 32px rgba(254,229,0,0.35);
+}
+.kakao-btn:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(254,229,0,0.45); }
+.contact-info {
+  margin-top: 52px; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.ci { text-align: center; }
+.ci-key { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); display: block; margin-bottom: 6px; }
+.ci-val { font-size: 0.9rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* FOOTER */
+footer {
+  background: var(--ink); padding: 32px 48px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(255,255,255,0.5); }
+.footer-logo span { color: #5CC8EA; }
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); font-weight: 300; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; gap: 40px; }
+  .hero-right { display: none; }
+  .intro-strip { flex-direction: column; padding: 60px 20px; }
+  .intro-stats { gap: 32px; }
+  .schools-section, .programs-section, .how-section, .contact-section { padding: 70px 20px; }
+  .how-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .how-grid::before { display: none; }
+  footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">세부<span>드림</span>연수</div>
+  <ul class="nav-links">
+    <li><a href="#schools">파트너 어학원</a></li>
+    <li><a href="#programs">프로그램</a></li>
+    <li><a href="#how">이용 안내</a></li>
+    <li><a href="#contact" class="nav-cta">무료 상담</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-label">🇵🇭 필리핀 세부 유학 전문 에이전시</div>
+    <h1>세부 최고의 어학원,<br><em>제가 직접</em><br>소개해 드립니다</h1>
+    <p class="hero-desc">
+      세부에서 12년 거주한 현지 전문가가<br>
+      단기연수부터 가족캠프까지 — 여러분께 꼭 맞는<br>
+      어학원을 직접 연결해 드리는 유학 에이전시입니다.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-fill">💬 카카오톡 무료 상담</a>
+      <a href="#schools" class="btn-ghost">파트너 어학원 보기</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-intro-card">
+      <h3>✦ 유학 에이전시란?</h3>
+      <p>세부드림연수는 학원이 아닙니다. 현지에서 직접 검증한 파트너 어학원을 소개하고, 입학·생활·관리까지 밀착 지원하는 세부 유학 전문 에이전시입니다.</p>
+    </div>
+    <div class="hero-schools">
+      <div class="school-pill">
+        <div class="s-name">CIA Cebu</div>
+        <div class="s-full">Cebu International Academy</div>
+      </div>
+      <div class="school-pill">
+        <div class="s-name">BE Cebu</div>
+        <div class="s-full">Brilliant English Academy</div>
+      </div>
+      <div class="school-pill">
+        <div class="s-name">Joyful</div>
+        <div class="s-full">Joyful English Academy</div>
+      </div>
+      <div class="school-pill">
+        <div class="s-name">CPI</div>
+        <div class="s-full">Center for Professional Improvement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="intro-strip">
+  <div class="intro-text">
+    <span class="eyebrow">About 세부드림연수</span>
+    <h2>세부 현지 12년 경력의<br>유학 전문가가 함께합니다</h2>
+    <p>현지에서 직접 어학원을 비교하고, 아이들을 관리해온 엄마이자 교육 전문가입니다. 광고가 아닌 직접 경험으로 추천하는 어학원만 소개해 드립니다.</p>
+  </div>
+  <div class="intro-stats">
+    <div class="i-stat"><span class="i-num">12+</span><span class="i-label">세부 거주 연수</span></div>
+    <div class="i-stat"><span class="i-num">10곳</span><span class="i-label">파트너 어학원</span></div>
+    <div class="i-stat"><span class="i-num">0원</span><span class="i-label">상담 수수료</span></div>
+  </div>
+</div>
+
+<section class="schools-section" id="schools">
+  <div class="section-header">
+    <span class="eyebrow">Partner Schools</span>
+    <h2 class="section-title">세부드림이 직접 검증한<br>파트너 어학원</h2>
+    <p class="section-sub">수많은 어학원 중 교육 품질·안전·관리 시스템을 현지에서 직접 확인하고 선별한 곳만 소개합니다.</p>
+  </div>
+  <div class="schools-grid">
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-cia">CIA Cebu</span>
+        <span class="school-type">단기연수 · 가족캠프</span>
+      </div>
+      <div class="school-card-body">
+        <h3>세부 인터내셔널 아카데미</h3>
+        <p class="school-en">Cebu International Academy</p>
+        <p class="school-desc">막탄 지역 소수 정예 어학원. 1:1 집중 수업과 체계적인 생활 관리 시스템이 강점으로, 단기 집중 과정과 가족 단위 연수에 특히 추천합니다.</p>
+        <div class="school-tags">
+          <span class="tag">1:1 집중수업</span><span class="tag">가족캠프 가능</span><span class="tag">소수 정예</span><span class="tag">막탄 위치</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">초등 ~ 성인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">2주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">가족 연수 특화</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-be">BE Cebu</span>
+        <span class="school-type">단기연수 · 성인</span>
+      </div>
+      <div class="school-card-body">
+        <h3>브릴리언트 잉글리시 아카데미</h3>
+        <p class="school-en">Brilliant English Academy, Cebu</p>
+        <p class="school-desc">세부 막탄의 ESL 전문 어학원. 스피킹 집중 과정과 비즈니스 영어 수업이 강점으로, 빠른 실전 영어 향상을 원하는 분께 추천합니다.</p>
+        <div class="school-tags">
+          <span class="tag">스피킹 집중</span><span class="tag">성인 특화</span><span class="tag">비즈니스 영어</span><span class="tag">ESL 전문</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">중학생 ~ 직장인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">4주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">스피킹 특화</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-joyful">Joyful</span>
+        <span class="school-type">단기연수 · 주니어</span>
+      </div>
+      <div class="school-card-body">
+        <h3>조이풀 잉글리시 아카데미</h3>
+        <p class="school-en">Joyful English Academy, Cebu</p>
+        <p class="school-desc">밝고 활기찬 학습 분위기로 유명한 어학원. 주니어 영어 프로그램이 특히 강하며, 아이들이 즐겁게 영어에 몰입할 수 있는 환경을 제공합니다.</p>
+        <div class="school-tags">
+          <span class="tag">주니어 특화</span><span class="tag">즐거운 수업</span><span class="tag">영어 몰입</span><span class="tag">활동 중심</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">초등 ~ 중등</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">2주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">주니어 영어 특화</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-ev">EV Academy</span>
+        <span class="school-type">단기연수 · 종합</span>
+      </div>
+      <div class="school-card-body">
+        <h3>이브이 아카데미 세부</h3>
+        <p class="school-en">EV Academy, Cebu</p>
+        <p class="school-desc">체계적인 커리큘럼과 꼼꼼한 학사 관리가 강점인 어학원. 수업 집중도가 높고 생활 관리가 철저해 처음 세부 연수를 오는 분들에게 안정적인 선택입니다.</p>
+        <div class="school-tags">
+          <span class="tag">체계적 커리큘럼</span><span class="tag">철저한 관리</span><span class="tag">안정적 환경</span><span class="tag">집중 수업</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">중학생 ~ 성인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">4주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">체계적 학사 관리</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-cpi">CPI</span>
+        <span class="school-type">단기연수 · 성인 · 취업</span>
+      </div>
+      <div class="school-card-body">
+        <h3>CPI 어학원</h3>
+        <p class="school-en">Center for Professional Improvement, Cebu</p>
+        <p class="school-desc">비즈니스 영어와 취업 영어에 강점을 가진 성인 특화 어학원. 실용적인 커리큘럼과 전문적인 강사진으로 직장인 연수생에게 높은 평가를 받고 있습니다.</p>
+        <div class="school-tags">
+          <span class="tag">비즈니스 영어</span><span class="tag">직장인 특화</span><span class="tag">실용 커리큘럼</span><span class="tag">성인 연수</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">고등 ~ 직장인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">4주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">비즈니스 영어 특화</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-smeag">SMEAG</span>
+        <span class="school-type">방학캠프 · 장기연수</span>
+      </div>
+      <div class="school-card-body">
+        <h3>SMEAG 어학원</h3>
+        <p class="school-en">SMEAG Language School, Cebu</p>
+        <p class="school-desc">세부를 대표하는 대형 어학원. 다양한 국적 학생들과 함께하는 글로벌 환경과 방학 캠프, 장기 연수 프로그램이 잘 갖춰져 있습니다.</p>
+        <div class="school-tags">
+          <span class="tag">글로벌 환경</span><span class="tag">방학캠프</span><span class="tag">장기연수</span><span class="tag">대형 시설</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">초등 ~ 성인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">4주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">다국적 학습 환경</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-beci">BECI</span>
+        <span class="school-type">단기연수 · 입문자</span>
+      </div>
+      <div class="school-card-body">
+        <h3>베이직 잉글리시 커뮤니케이션</h3>
+        <p class="school-en">Basic English Communication Institute</p>
+        <p class="school-desc">기초부터 고급까지 체계적인 레벨 관리로 유명. 한국 학생에게 친숙한 학습 시스템과 깔끔한 기숙사 환경으로 입문자에게 특히 추천합니다.</p>
+        <div class="school-tags">
+          <span class="tag">레벨별 관리</span><span class="tag">기초 친화</span><span class="tag">기숙사 완비</span><span class="tag">입문자 추천</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">초등 ~ 성인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">2주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">입문자 추천</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-philinter">Philinter</span>
+        <span class="school-type">단기연수 · 종합</span>
+      </div>
+      <div class="school-card-body">
+        <h3>필인터 어학원</h3>
+        <p class="school-en">Philippine International School of English</p>
+        <p class="school-desc">오랜 역사와 검증된 커리큘럼을 자랑하는 세부 대표 어학원 중 하나. 다양한 영어 과정과 넓은 캠퍼스 시설로 편안한 학습 환경을 제공합니다.</p>
+        <div class="school-tags">
+          <span class="tag">오랜 역사</span><span class="tag">넓은 캠퍼스</span><span class="tag">다양한 과정</span><span class="tag">검증된 커리큘럼</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">초등 ~ 성인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">4주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">캠퍼스형 어학원</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-cella">CELLA</span>
+        <span class="school-type">단기연수 · 집중</span>
+      </div>
+      <div class="school-card-body">
+        <h3>셀라 어학원</h3>
+        <p class="school-en">Cebu ELS Language Academy</p>
+        <p class="school-desc">하루 10시간 이상의 강도 높은 집중 영어 수업으로 유명한 어학원. 짧은 기간에 확실한 실력 향상을 원하는 학생에게 특히 적합합니다.</p>
+        <div class="school-tags">
+          <span class="tag">강도 높은 수업</span><span class="tag">단기 집중</span><span class="tag">빠른 실력 향상</span><span class="tag">1:1 중심</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">중학생 ~ 성인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">2주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">집중 수업 특화</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-card-top">
+        <span class="school-badge badge-pines">Pines</span>
+        <span class="school-type">장기연수 · 종합</span>
+      </div>
+      <div class="school-card-body">
+        <h3>파인스 인터내셔널 아카데미</h3>
+        <p class="school-en">Pines International Academy, Cebu</p>
+        <p class="school-desc">바기오에서 시작해 세부에 자리 잡은 유서 깊은 어학원. 탄탄한 영어 교육 노하우와 쾌적한 학습 환경으로 장기 연수를 계획하는 학생에게 인기가 높습니다.</p>
+        <div class="school-tags">
+          <span class="tag">유서 깊은 명성</span><span class="tag">장기연수</span><span class="tag">쾌적한 환경</span><span class="tag">탄탄한 커리큘럼</span>
+        </div>
+        <div class="school-meta">
+          <div class="meta-item"><span class="meta-key">대상</span><span class="meta-val">초등 ~ 성인</span></div>
+          <div class="meta-item"><span class="meta-key">최단 과정</span><span class="meta-val">4주~</span></div>
+          <div class="meta-item"><span class="meta-key">특징</span><span class="meta-val">장기 유학 추천</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="programs-section" id="programs">
+  <div class="section-header">
+    <span class="eyebrow">Programs</span>
+    <h2 class="section-title">목적에 맞는 프로그램을<br>찾아드립니다</h2>
+    <p class="section-sub">어학원 선택부터 현지 생활 정착까지,<br>세부드림이 처음부터 끝까지 함께합니다.</p>
+  </div>
+  <div class="programs-grid">
+    <div class="prog-card">
+      <span class="prog-icon">✈️</span>
+      <h3>단기 영어연수</h3>
+      <span class="prog-en">SHORT-TERM STUDY</span>
+      <p>2주~3개월, 목적과 레벨에 맞는 어학원을 정확히 매칭해 드립니다.</p>
+      <div class="prog-list">
+        <div class="prog-item">어학원 비교 · 맞춤 매칭</div>
+        <div class="prog-item">공항 픽업 & 정착 지원</div>
+        <div class="prog-item">현지 생활 밀착 관리</div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <span class="prog-icon">👨‍👩‍👧</span>
+      <h3>가족 영어캠프</h3>
+      <span class="prog-en">FAMILY CAMP</span>
+      <p>아이는 어학원, 부모님은 힐링. 온 가족이 함께하는 세부 영어 몰입 캠프를 기획해 드립니다.</p>
+      <div class="prog-list">
+        <div class="prog-item">가족 맞춤 숙소 & 어학원 연결</div>
+        <div class="prog-item">한국어 지원 스태프 배치</div>
+        <div class="prog-item">체험 액티비티 코디</div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <span class="prog-icon">🏖️</span>
+      <h3>방학 집중캠프</h3>
+      <span class="prog-en">VACATION CAMP</span>
+      <p>여름·겨울방학 특별 기획. 최적의 방학 캠프 어학원과 일정을 설계해 드립니다.</p>
+      <div class="prog-list">
+        <div class="prog-item">방학 기간 맞춤 일정 설계</div>
+        <div class="prog-item">그룹 모집 시 단가 절감</div>
+        <div class="prog-item">섬투어 등 특별 액티비티</div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <span class="prog-icon">🎒</span>
+      <h3>장기 유학 연계</h3>
+      <span class="prog-en">LONG-TERM STUDY</span>
+      <p>3개월 이상 장기 유학이라면? 비자·숙소·어학원 일정까지 통합 플랜을 제안합니다.</p>
+      <div class="prog-list">
+        <div class="prog-item">SSP 학생비자 안내</div>
+        <div class="prog-item">숙소 & 어학원 통합 플랜</div>
+        <div class="prog-item">장기 현지 지원 서비스</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-section" id="how">
+  <div class="section-header">
+    <span class="eyebrow">How It Works</span>
+    <h2 class="section-title">이용 방법은 간단합니다</h2>
+    <p class="section-sub">복잡한 절차 없이 카카오톡 한 통으로 시작하세요.</p>
+  </div>
+  <div class="how-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>카카오톡 무료 상담</h4>
+      <p>연수 목적, 기간, 예산을 알려주시면 맞춤 어학원을 추천해 드립니다.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>어학원 비교 & 결정</h4>
+      <p>현지 경험을 바탕으로 장단점을 솔직하게 안내해 드립니다.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>입학 & 출발 준비</h4>
+      <p>입학 신청, 숙소, 항공권 등 출발 전 준비를 도와드립니다.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>현지 밀착 지원</h4>
+      <p>공항 픽업부터 귀국까지 현지 스태프가 함께합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <span class="eyebrow">Free Consultation</span>
+    <h2 class="section-title">지금 바로 물어보세요</h2>
+    <p class="contact-desc">
+      어떤 질문이든 환영합니다.<br>
+      세부 어학원, 비용, 일정, 안전 — 뭐든 편하게 물어보세요.<br>
+      상담은 무료이며 부담 없습니다 😊
+    </p>
+    <a href="http://pf.kakao.com/_wxmLsX/chat" class="kakao-btn">
+      <span style="font-size:1.3rem">💬</span>
+      카카오톡 채널로 상담하기
+    </a>
+    <div class="contact-info">
+      <div class="ci"><span class="ci-key">Location</span><span class="ci-val">필리핀 세부 막탄</span></div>
+      <div class="ci"><span class="ci-key">Speciality</span><span class="ci-val">단기연수 · 가족캠프</span></div>
+      <div class="ci"><span class="ci-key">Partners</span><span class="ci-val">CIA · BE · Joyful · EV · CPI · SMEAG · BECI · Philinter · CELLA · Pines</span></div>
+      <div class="ci"><span class="ci-key">Consultation</span><span class="ci-val">무료 상담</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">세부<span>드림</span>연수</div>
+  <div class="footer-copy">© 2025 세부드림연수 | Cebu Dream Study Agency · Mactan, Lapu-Lapu City, Cebu, Philippines</div>
+</footer>
+
+</body>
+</html>
